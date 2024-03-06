@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -52,3 +53,12 @@ Route::middleware('guest')->group(function () {
 
     Route::post('/reset', [ForgotPasswordController::class, 'reset'])->name('reset');
 });
+
+//category
+Route::get('/dashboard_category', [CategoryController::class, 'showCategories']);
+
+Route::post('/dashboard_category', [CategoryController::class, 'store']);
+
+Route::delete('/deleteCategory/{id}', [CategoryController::class, 'destroyCategory']);
+Route::delete('/destroy/{id}', [CategoryController::class, 'destroy']);
+
