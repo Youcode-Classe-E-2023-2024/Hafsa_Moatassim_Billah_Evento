@@ -172,7 +172,7 @@
         <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
             <div class="grid grid-cols-1 lg:grid-cols-1 p-4 gap-4">
                 <button data-modal-target="crud-modal2" data-modal-toggle="crud-modal2"
-                        class="lg:w-1/4 block text-white bg-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                        class="lg:w-1/4 block text-white bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                         type="button">
                     Add New Category
                 </button>
@@ -191,87 +191,35 @@
                                     <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                         Created at
                                     </th>
-                                    <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ">
+                                    <th class="text-center px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ">
                                         Operation
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="text-gray-700 dark:text-gray-100">
-                                    <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                        Coral
-                                    </th>
-                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        Chaabi
-                                    </td>
-                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
-                                                class="block text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                                                type="button">
-                                            Update Category
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="text-gray-700 dark:text-gray-100">
-                                    <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                        Coral
-                                    </th>
-                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        Chaabi
-                                    </td>
-                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
-                                                class="block text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                                                type="button">
-                                            Update Category
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="text-gray-700 dark:text-gray-100">
-                                    <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                        Coral
-                                    </th>
-                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        Chaabi
-                                    </td>
-                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
-                                                class="block text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                                                type="button">
-                                            Update Category
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="text-gray-700 dark:text-gray-100">
-                                    <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                        Coral
-                                    </th>
-                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        Chaabi
-                                    </td>
-                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
-                                                class="block text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                                                type="button">
-                                            Update Category
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="text-gray-700 dark:text-gray-100">
-                                    <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                        Coral
-                                    </th>
-                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        Chaabi
-                                    </td>
-                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
-                                                class="block text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                                                type="button">
-                                            Update Category
-                                        </button>
-                                    </td>
-                                </tr>
+                                @foreach($categories as $category)
+                                    <tr class="text-gray-700 dark:text-gray-100">
+                                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                                            {{$category->name}}
+                                        </th>
+                                        <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                            {{$category->created_at}}
+                                        </td>
+                                        <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                            <div class="flex justify-center">
+                                                <form action="/deleteCategory/{{$category->id}}" method="POST">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button
+                                                        class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-400 dark:hover:bg-red-700 dark:focus:ring-red-800"
+                                                        type="submit">
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -347,7 +295,8 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5">
+            <form class="p-4 md:p-5" action="/dashboard_category" method="POST">
+                @csrf
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
                         <label for="name"
@@ -363,7 +312,8 @@
                          xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                               d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                              clip-rule="evenodd"></path>
+                              clip-rule="evenodd">
+                        </path>
                     </svg>
                     Add Category
                 </button>
@@ -372,8 +322,9 @@
     </div>
 </div>
 
-
 </body>
+</html>
+
 <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
@@ -400,3 +351,4 @@
         }
     }
 </script>
+
