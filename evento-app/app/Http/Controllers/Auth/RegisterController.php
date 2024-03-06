@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -25,27 +26,30 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
+        /*
+        Validation
+        */
         $request->validate([
-            "name" => 'required|min:3',
-            "email" => ['required', 'email', Rule::unique('users', 'email')],
-            "password" => 'required|min:6'
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed|min:8',
+            'picture' => 'required'
         ]);
+
+        $fileName = time() . $request->file('picture')->getClientOriginalName();
+        $path = $request->file('picture')->storeAs('picture', $fileName, 'public');
+        $picturePath = Storage::url($path);
+
+        $picture["picture"] = $picturePath;
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'picture' => $picturePath
         ]);
-//        $user->assignRole('client');
-        Auth::login($user);
 
-//        if($user->HasRole('client')){
-//
-//        }else{
-//            return redirect('dashboard')->with("login", 'true');
-//
-//        }
+        return redirect('/login');
 
-        return redirect('login');
     }
 }

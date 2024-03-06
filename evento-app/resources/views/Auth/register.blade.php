@@ -59,17 +59,14 @@
                         <p class="text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="flex items-start">
-                        <div class="flex items-center h-5">
-                            <input id="terms" aria-describedby="terms" type="checkbox"
-                                   class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                                   required="">
-                        </div>
-                        <div class="ml-3 text-sm">
-                            <label for="terms" class="font-light text-gray-500 dark:text-gray-300">I accept the
-                                <a class="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                                   href="#">Terms and Conditions</a></label>
-                        </div>
+                    <div>
+                        <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white">
+                            <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                            </svg>
+                            <span class="mt-2 text-base leading-normal">Select a file</span>
+                            <input type='file' name="picture" class="hidden" />
+                        </label>
                     </div>
                     <button type="submit"
                             class="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">
@@ -92,12 +89,9 @@
                         <span>Sign in with Google</span>
                     </button>
                     <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                        Already have an account? <a href="{{ route('Form-login') }}"
-                                                    class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login
+                        Already have an account? <a href="{{ route('Form-login') }}" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login
                             here</a>
                     </p>
-
-
                 </form>
             </div>
         </div>

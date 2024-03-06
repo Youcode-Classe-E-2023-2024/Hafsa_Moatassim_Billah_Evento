@@ -440,7 +440,7 @@
                 <button data-modal-target="crud-modal3" data-modal-toggle="crud-modal3"
                         class="lg:w-1/4 block text-white bg-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                         type="button">
-                    Add New Category
+                    Add New Event
                 </button>
                 <!-- Events -->
                 <div
@@ -456,14 +456,14 @@
                             <table class="items-center w-full bg-transparent border-collapse">
                                 <thead>
                                 <tr>
-                                    <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
-                                        Orgenizer
-                                    </th>
                                     <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                         Event
                                     </th>
                                     <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                         Category
+                                    </th>
+                                    <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                        Date de Creation
                                     </th>
                                     <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
                                         Approve
@@ -476,16 +476,16 @@
                                         Coral
                                     </th>
                                     <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                        Coral
+                                        chaabi
                                     </th>
                                     <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        Chaabi
+                                        19/02/2024
                                     </td>
                                     <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                         <button
                                             class="middle none center rounded-lg bg-green-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
                                             data-ripple-light="true">
-                                            Approve
+                                            Update
                                         </button>
                                         <button
                                             class="middle none center rounded-lg bg-red-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
@@ -499,16 +499,16 @@
                                         Coral
                                     </th>
                                     <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                        Coral
+                                        chaabi
                                     </th>
                                     <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        Chaabi
+                                        19/02/2024
                                     </td>
                                     <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                         <button
                                             class="middle none center rounded-lg bg-green-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
                                             data-ripple-light="true">
-                                            Approve
+                                            Update
                                         </button>
                                         <button
                                             class="middle none center rounded-lg bg-red-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
@@ -522,16 +522,16 @@
                                         Coral
                                     </th>
                                     <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                        Coral
+                                        chaabi
                                     </th>
                                     <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        Chaabi
+                                        19/02/2024
                                     </td>
                                     <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                         <button
                                             class="middle none center rounded-lg bg-green-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
                                             data-ripple-light="true">
-                                            Approve
+                                            Update
                                         </button>
                                         <button
                                             class="middle none center rounded-lg bg-red-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
@@ -545,16 +545,16 @@
                                         Coral
                                     </th>
                                     <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                        Coral
+                                        chaabi
                                     </th>
                                     <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        Chaabi
+                                        19/02/2024
                                     </td>
                                     <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                         <button
                                             class="middle none center rounded-lg bg-green-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
                                             data-ripple-light="true">
-                                            Approve
+                                            Update
                                         </button>
                                         <button
                                             class="middle none center rounded-lg bg-red-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
@@ -568,16 +568,16 @@
                                         Coral
                                     </th>
                                     <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                        Coral
+                                        chaabi
                                     </th>
                                     <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        Chaabi
+                                        19/02/2024
                                     </td>
                                     <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                         <button
                                             class="middle none center rounded-lg bg-green-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
                                             data-ripple-light="true">
-                                            Approve
+                                            Update
                                         </button>
                                         <button
                                             class="middle none center rounded-lg bg-red-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
@@ -586,29 +586,7 @@
                                         </button>
                                     </td>
                                 </tr>
-                                <tr class="text-gray-700 dark:text-gray-100">
-                                    <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                        Coral
-                                    </th>
-                                    <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                        Coral
-                                    </th>
-                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        Chaabi
-                                    </td>
-                                    <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <button
-                                            class="middle none center rounded-lg bg-green-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
-                                            data-ripple-light="true">
-                                            Approve
-                                        </button>
-                                        <button
-                                            class="middle none center rounded-lg bg-red-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
-                                            data-ripple-light="true">
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
+
                                 </tbody>
                             </table>
                         </div>
