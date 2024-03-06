@@ -29,7 +29,13 @@ Route::get('/addevent', function () {
     return view('organizer_event');
 });
 
+Route::get('/eventliste', function () {
+    return view('eventliste');
+});
 
+Route::get('/content', function () {
+    return view('content');
+});
 
 
 
