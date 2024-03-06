@@ -24,6 +24,10 @@ Route::get('/dashboard_user', function () {
     return view('dashboard_user');
 });
 
+Route::get('/addevent', function () {
+    return view('organizer_event');
+});
+
 
 
 
