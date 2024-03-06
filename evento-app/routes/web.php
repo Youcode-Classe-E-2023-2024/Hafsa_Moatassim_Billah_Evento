@@ -14,6 +14,19 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+Route::get('/dashboard_category', function () {
+    return view('dashboard_category');
+});
+Route::get('/dashboard_user', function () {
+    return view('dashboard_user');
+});
+
+
+
+
 
 Route::post('logout', [LogoutController::class, 'destroy'])
     ->middleware('auth');
