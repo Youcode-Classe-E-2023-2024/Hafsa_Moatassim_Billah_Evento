@@ -170,8 +170,6 @@
         <div
             class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
 
-
-
             <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
 
                 <!-- Statistics Cards -->
@@ -255,6 +253,9 @@
                                 <table class="items-center w-full bg-transparent border-collapse">
                                     <thead>
                                     <tr>
+                                        <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
+                                            Orgenizer
+                                        </th>
                                         <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                             Event
                                         </th>
@@ -271,19 +272,6 @@
                                         <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                                             Coral
                                         </th>
-                                        <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                            Chaabi
-                                        </td>
-                                        <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                            <button
-                                                class="middle none center rounded-lg bg-green-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
-                                                data-ripple-light="true"
-                                            >
-                                                Approve
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr class="text-gray-700 dark:text-gray-100">
                                         <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                                             Coral
                                         </th>
@@ -293,13 +281,20 @@
                                         <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                             <button
                                                 class="middle none center rounded-lg bg-green-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
-                                                data-ripple-light="true"
-                                            >
+                                                data-ripple-light="true">
                                                 Approve
+                                            </button>
+                                            <button
+                                                class="middle none center rounded-lg bg-red-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
+                                                data-ripple-light="true">
+                                                Delete
                                             </button>
                                         </td>
                                     </tr>
                                     <tr class="text-gray-700 dark:text-gray-100">
+                                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                                            Coral
+                                        </th>
                                         <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                                             Coral
                                         </th>
@@ -309,13 +304,20 @@
                                         <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                             <button
                                                 class="middle none center rounded-lg bg-green-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
-                                                data-ripple-light="true"
-                                            >
+                                                data-ripple-light="true">
                                                 Approve
+                                            </button>
+                                            <button
+                                                class="middle none center rounded-lg bg-red-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
+                                                data-ripple-light="true">
+                                                Delete
                                             </button>
                                         </td>
                                     </tr>
                                     <tr class="text-gray-700 dark:text-gray-100">
+                                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                                            Coral
+                                        </th>
                                         <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                                             Coral
                                         </th>
@@ -325,13 +327,20 @@
                                         <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                             <button
                                                 class="middle none center rounded-lg bg-green-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
-                                                data-ripple-light="true"
-                                            >
+                                                data-ripple-light="true">
                                                 Approve
+                                            </button>
+                                            <button
+                                                class="middle none center rounded-lg bg-red-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
+                                                data-ripple-light="true">
+                                                Delete
                                             </button>
                                         </td>
                                     </tr>
                                     <tr class="text-gray-700 dark:text-gray-100">
+                                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                                            Coral
+                                        </th>
                                         <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                                             Coral
                                         </th>
@@ -341,13 +350,20 @@
                                         <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                             <button
                                                 class="middle none center rounded-lg bg-green-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
-                                                data-ripple-light="true"
-                                            >
+                                                data-ripple-light="true">
                                                 Approve
+                                            </button>
+                                            <button
+                                                class="middle none center rounded-lg bg-red-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
+                                                data-ripple-light="true">
+                                                Delete
                                             </button>
                                         </td>
                                     </tr>
                                     <tr class="text-gray-700 dark:text-gray-100">
+                                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                                            Coral
+                                        </th>
                                         <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                                             Coral
                                         </th>
@@ -357,14 +373,39 @@
                                         <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                             <button
                                                 class="middle none center rounded-lg bg-green-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
-                                                data-ripple-light="true"
-                                            >
+                                                data-ripple-light="true">
                                                 Approve
+                                            </button>
+                                            <button
+                                                class="middle none center rounded-lg bg-red-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
+                                                data-ripple-light="true">
+                                                Delete
                                             </button>
                                         </td>
                                     </tr>
-
-
+                                    <tr class="text-gray-700 dark:text-gray-100">
+                                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                                            Coral
+                                        </th>
+                                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                                            Coral
+                                        </th>
+                                        <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                            Chaabi
+                                        </td>
+                                        <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                            <button
+                                                class="middle none center rounded-lg bg-green-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
+                                                data-ripple-light="true">
+                                                Approve
+                                            </button>
+                                            <button
+                                                class="middle none center rounded-lg bg-red-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white"
+                                                data-ripple-light="true">
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
