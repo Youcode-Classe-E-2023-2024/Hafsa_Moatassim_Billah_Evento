@@ -2,64 +2,126 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Event;
-use App\Models\Lieu;
 use App\Models\Category;
+use App\Models\Event;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 
-class eventController extends Controller
+class EventController extends Controller
 {
-    public function addEventView()
+    /**
+     * Display a listing of the resource.
+     */
+    public function showForm()
     {
-        $cities = Lieu::all();
-        $categories = Category::all();
-        return view('Events.addEvent', compact('cities','categories'));
+        $content = file_get_contents('https://raw.githubusercontent.com/alaouy/sql-moroccan-cities/master/json/ville.json');
+        $data = json_decode($content);
+        return view('organiser.createEvent', compact('data'));
     }
 
-    public function addEvent(Request $request)
+
+    public function AllEvents()
     {
-        $validator = Validator::make($request->all(), [
+        $events = Event::all();
+        return view('organiser.allEvents', compact('events'));
+    }
+
+    public function ShowEvent()
+    {
+        $events = Event::all();
+        return view('organiser.allEvents', compact('events'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $user = Auth::id();
+
+        $request->validate([
             'title' => 'required',
-            'description' => 'required',
+            'location' => 'required',
             'price' => 'required',
-            'place' => 'required',
-            'lieu' => 'required',
-            'category' => 'required',
-            'image' =>'required',
-            'deadline' => 'required',
+            'date' => 'required',
+            'time' => 'required',
+            'description' => 'required',
+            'reservation_type' => 'required',
+            'image' => 'required',
         ]);
 
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-        // dd($request);
-        $user = Auth::user();
-
-        $event = Event::create([
-            'title' => $request->input('title'),
-            'description' => $request->input('description'),
-            'price' => $request->input('price'),
-            'id_image' => $request->input('image'),
-            'nombre_place' => $request->input('place'),
-            'ville_id' => $request->input('lieu'),
-            'category_id' => $request->input('category'),
-            'deadline' => $request->input('deadline'),
-            'created_by' => $user->id,
+        Event::create([
+            'title' => $request->title,
+            'location' => $request->location,
+            'date' => $request->date,
+            'time' => $request->time,
+            'price' => $request->price,
+            'nbr_place' => $request->nbr_place,
+            'description' => $request->description,
+            'reservation_type' => $request->reservation_type,
+            'image' => $request->image,
+            'creator' => $user,
         ]);
 
-        foreach ($request->file('image') as $file) {
-            $storedFile = $file->store('uploads');
-
-            $media = $event->addMedia(storage_path('app/' . $storedFile))->toMediaCollection();
-
-            $event->id_image = $media->id;
-            $event->save();
-        }
-
-        return redirect()->route('addEvent.view')->with('success', 'Evenement bien ajoutée.');
+        return redirect('/allEvents');
     }
 
+    /**
+     * Display the specified resource.
+     */
+    public function editEvent($id)
+    {
+        $content = file_get_contents('https://raw.githubusercontent.com/alaouy/sql-moroccan-cities/master/json/ville.json');
+        $data = json_decode($content);
 
+        $event = Event::find($id);
+
+        return view('organiser.updateEvent', compact('event', 'data'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function updateEvent(Request $request, $id)
+    {
+        $user = Auth::id();
+        $event = Event::findOrFail($id);
+
+        $request->validate([
+            'title' => 'required',
+            'location' => 'required',
+            'price' => 'required',
+            'date' => 'required',
+            'time' => 'required',
+            'description' => 'required',
+            'reservation_type' => 'required',
+            'image' => 'required',
+        ]);
+
+
+        $event->title = $request['title'];
+        $event->location = $request['location'];
+        $event->date = $request['date'];
+        $event->time = $request['time'];
+        $event->price = $request['price'];
+        $event->nbr_place = $request['nbr_place'];
+        $event->description = $request['description'];
+        $event->reservation_type = $request['reservation_type'];
+        $event->image = $request['image'];
+        $event->creator = $user;
+
+        $event->save();
+        return redirect('/allEvents');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function deleteEvent(string $id)
+    {
+        $event = Event::findOrFail($id);
+        $event->delete();
+
+        return redirect()->back();
+    }
 }
