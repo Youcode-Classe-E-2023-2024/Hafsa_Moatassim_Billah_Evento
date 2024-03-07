@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('location');
+            $table->date('date');
+            $table->time('time');
+            $table->decimal('price');
+            $table->integer('nbr_place');
+            $table->text('description');
+            $table->enum('reservation_type', ['automatic', 'manuel']);
+            $table->string('image');
+            $table->unsignedBigInteger('creator');
+
+            $table->foreign('creator')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
