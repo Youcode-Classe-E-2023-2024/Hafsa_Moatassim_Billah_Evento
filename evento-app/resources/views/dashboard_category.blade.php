@@ -181,7 +181,7 @@
                 <div
                     class="relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded">
                     <div class="rounded-t mb-0 px-0 border-0">
-                        <div class="block w-full overflow-x-auto max-h-[600px] overflow-y-auto">
+                        <div class="block w-full overflow-x-auto max-h-[500px] overflow-y-auto">
                             <table class="items-center w-full bg-transparent border-collapse">
                                 <thead>
                                 <tr>
