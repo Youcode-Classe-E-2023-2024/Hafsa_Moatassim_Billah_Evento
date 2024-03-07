@@ -23,9 +23,10 @@ return new class extends Migration
             $table->enum('reservation_type', ['automatic', 'manuel']);
             $table->string('image');
             $table->unsignedBigInteger('creator');
+            $table->unsignedBigInteger('category');
 
             $table->foreign('creator')->references('id')->on('users')->onDelete('cascade');
-
+            $table->foreign('category')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

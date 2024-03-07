@@ -14,7 +14,7 @@
     <div class="w-full  mx-auto">
         <div class="grid grid-cols-1 sm:grid-cols-2">
             <div>
-                <div class="mt-20 mx-5">
+                <div class="mt-20 pl-5 mx-5">
                     <img
                         src="https://images.pexels.com/photos/2263436/pexels-photo-2263436.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
                 </div>

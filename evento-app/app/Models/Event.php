@@ -18,6 +18,7 @@ class Event extends Model
         'description',
         'reservation_type',
         'image',
-        'creator'
+        'creator',
+        'category'
     ];
 }
