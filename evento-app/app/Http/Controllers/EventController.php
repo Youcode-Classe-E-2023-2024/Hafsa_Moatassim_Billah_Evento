@@ -50,7 +50,6 @@ class EventController extends Controller
             'reservation_type' => 'required',
             'image' => 'required|image',
         ]);
-
         if ($request->hasFile('image')) {
             $fileName = time() . $request->file('image')->getClientOriginalName();
             $path = $request->file('image')->storeAs('image', $fileName, 'public');
@@ -58,6 +57,7 @@ class EventController extends Controller
         } else {
             $picturePath = null;
         }
+
 
         Event::create([
             'title' => $request->title,
@@ -71,6 +71,8 @@ class EventController extends Controller
             'image' => $picturePath,
             'creator' => $user,
         ]);
+
+
 
         return redirect('/allEvents');
     }

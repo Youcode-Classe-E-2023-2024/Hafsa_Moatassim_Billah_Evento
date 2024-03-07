@@ -70,7 +70,7 @@ Route::delete('/destroy/{id}', [CategoryController::class, 'destroy']);
 //events
 Route::get('/createEvent', [EventController::class, 'showForm']);
 
-Route::post('/createEvent', [EventController::class, 'store']);
+Route::post('/createEvent', [EventController::class, 'store'])->name('event.store');
 
 Route::get('/allEvents', [EventController::class, 'AllEvents']);
 
