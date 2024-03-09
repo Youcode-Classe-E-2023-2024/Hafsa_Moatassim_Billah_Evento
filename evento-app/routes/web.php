@@ -25,9 +25,6 @@ Route::get('/dashboard_user', function () {
     return view('dashboard_user');
 });
 
-Route::get('/addevent', function () {
-    return view('organizer_event');
-});
 
 Route::get('/eventliste', function () {
     return view('eventliste');
@@ -79,3 +76,6 @@ Route::delete('/deleteEvent/{id}', [EventController::class, 'deleteEvent']);
 Route::get('/updateEvent/{id}', [EventController::class, 'editEvent']);
 
 Route::post('/updateEvent/{id}', [EventController::class, 'updateEvent']);
+Route::get('/addevent', [EventController::class, 'ShowAddEvent']);
+Route::get('/addevent', [EventController::class, 'AllEvents']);
+

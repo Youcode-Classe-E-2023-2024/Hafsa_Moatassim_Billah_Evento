@@ -7,6 +7,7 @@ use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
 {
@@ -23,14 +24,22 @@ class EventController extends Controller
 
     public function AllEvents()
     {
+        $categories = Category::all();
+
         $events = Event::all();
-        return view('organiser.allEvents', compact('events'));
+        return view('organizer_event', compact('events', 'categories'));
     }
 
     public function ShowEventDescription($id)
     {
         $event = Event::find($id);
         return view('organiser.description', compact('event'));
+    }
+
+    public function ShowAddEvent()
+    {
+        $categories = Category::all();
+        return view('organizer_event', compact('categories'));
     }
 
     /**
@@ -40,7 +49,7 @@ class EventController extends Controller
     {
         $user = Auth::id();
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'title' => 'required',
             'location' => 'required',
             'price' => 'required',
@@ -49,7 +58,16 @@ class EventController extends Controller
             'description' => 'required',
             'reservation_type' => 'required',
             'image' => 'required|image',
+            'category' => 'required',
+
         ]);
+
+//        if($validator->fails()) {
+//            return back()
+//                ->withErrors($validator)
+//                ->withInput();
+//        }
+
         if ($request->hasFile('image')) {
             $fileName = time() . $request->file('image')->getClientOriginalName();
             $path = $request->file('image')->storeAs('image', $fileName, 'public');
@@ -57,6 +75,7 @@ class EventController extends Controller
         } else {
             $picturePath = null;
         }
+
 
 
         Event::create([
@@ -69,7 +88,8 @@ class EventController extends Controller
             'description' => $request->description,
             'reservation_type' => $request->reservation_type,
             'image' => $picturePath,
-            'creator' => $user,
+            'category' => $request->category,
+//            'creator' => $user,
         ]);
 
 

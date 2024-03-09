@@ -167,8 +167,8 @@
     </style>
 <body>
 <div x-data="setup()" :class="{ 'dark': isDark }">
-    @include('sidebar')
 
+    @include('sidebar')
 
     <div
         class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
@@ -523,7 +523,11 @@
             {{--                </div>--}}
             {{--            </div>--}}
             <!-- /Statistics -->
-
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
+            @endif
             <div class="grid grid-cols-1 lg:grid-cols-1 p-4 gap-4">
                 <button data-modal-target="crud-modal3" data-modal-toggle="crud-modal3"
                         class="flex mx-auto lg:w-1/7 block text-white bg-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
@@ -541,114 +545,42 @@
                 <section>
                     <div class="container">
                         <div class="flex flex-wrap -mx-4">
-                            <div class="w-full md:w-1/2 xl:w-1/3 px-4">
-                                <div class="bg-white rounded-lg overflow-hidden mb-10">
-                                    <img
-                                        src="https://cdn.tailgrids.com/1.0/assets/images/cards/card-01/image-01.jpg"
-                                        alt="image"
-                                        class="w-full"
-                                    />
-                                    <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
-                                        <h3>
-                                            <a
-                                                href="javascript:void(0)"
-                                                class="font-semibold text-dark text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px] mb-4 block hover:text-primary">
-                                                50+ Best creative website themes & templates
-                                            </a>
-                                        </h3>
-
-                                        <p class="text-base text-body-color leading-relaxed mb-7">
-                                            07/03/2024
-                                        </p>
-                                        <p class="text-base text-body-color leading-relaxed mb-7">
-                                            100 MAD
-                                        </p>
-                                        <p class="text-base text-body-color leading-relaxed mb-7">
-                                            Location
-                                        </p>
-
-                                        <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                                            Update
-                                        </button>
-
-                                        <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                                            Delete
-                                        </button>
+                            <div class="flex flex-wrap -mx-4">
+                                @foreach($events as $event)
+                                    <div class="w-full md:w-1/3 px-4">
+                                        <div class="bg-gray-300 rounded-lg mb-10">
+                                            <img src="https://images.pexels.com/photos/20392251/pexels-photo-20392251/free-photo-of-ete-jardin-animal-feuille.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                                 alt="image" class="w-full"/>
+                                            <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+                                                <h3>
+                                                    <a href="javascript:void(0)"
+                                                       class="font-semibold text-dark text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px] mb-4 block hover:text-primary">
+                                                        {{$event->title}}
+                                                    </a>
+                                                </h3>
+                                                <p class="text-base text-body-color leading-relaxed mb-7">
+                                                    {{$event->created_at}}
+                                                </p>
+                                                <p class="text-base text-body-color leading-relaxed mb-7">
+                                                    {{$event->price}} MAD
+                                                </p>
+                                                <p class="text-base text-body-color leading-relaxed mb-7">
+                                                    {{$event->location}}
+                                                </p>
+                                                <button type="button"
+                                                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                                    Update
+                                                </button>
+                                                <button type="button"
+                                                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
-                            <div class="w-full md:w-1/2 xl:w-1/3 px-4">
-                                <div class="bg-white rounded-lg overflow-hidden mb-10">
-                                    <img
-                                        src="https://cdn.tailgrids.com/1.0/assets/images/cards/card-01/image-02.jpg"
-                                        alt="image"
-                                        class="w-full"
-                                    />
-                                    <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
-                                        <h3>
-                                            <a
-                                                href="javascript:void(0)"
-                                                class="font-semibold text-dark text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px] mb-4 block hover:text-primary">
-                                                The ultimate UX and UI guide to card design
-                                            </a>
-                                        </h3>
 
-                                        <p class="text-base text-body-color leading-relaxed mb-7">
-                                            07/03/2024
-                                        </p>
-                                        <p class="text-base text-body-color leading-relaxed mb-7">
-                                            100 MAD
-                                        </p>
-                                        <p class="text-base text-body-color leading-relaxed mb-7">
-                                            Location
-                                        </p>
-
-                                        <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                                            Update
-                                        </button>
-
-                                        <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-full md:w-1/2 xl:w-1/3 px-4">
-                                <div class="bg-white rounded-lg overflow-hidden mb-10">
-                                    <img
-                                        src="https://cdn.tailgrids.com/1.0/assets/images/cards/card-01/image-03.jpg"
-                                        alt="image"
-                                        class="w-full"
-                                    />
-                                    <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
-                                        <h3>
-                                            <a
-                                                href="javascript:void(0)"
-                                                class="font-semibold text-dark text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px] mb-4 block hover:text-primary">
-                                                The ultimate UX and UI guide to card design
-                                            </a>
-                                        </h3>
-
-                                        <p class="text-base text-body-color leading-relaxed mb-7">
-                                           07/03/2024
-                                        </p>
-                                        <p class="text-base text-body-color leading-relaxed mb-7">
-                                            100 MAD
-                                        </p>
-                                        <p class="text-base text-body-color leading-relaxed mb-7">
-                                            Location
-                                        </p>
-
-                                        <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                                            Update
-                                        </button>
-
-                                        <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -680,7 +612,7 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" action="{{ route('event.store') }}" method="post">
+            <form class="p-4 md:p-5" action="{{ route('event.store') }}" method="post" enctype="multipart/form-data">
                 @method('post')
                 @csrf
                 <div class="grid gap-4 mb-4 grid-cols-2">
@@ -693,13 +625,12 @@
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                        <select id="category"
+                        <select name="category"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected="">Select category</option>
-                            {{--                        @foreach($categories as $category)--}}
-
-                            {{--                                <option value="{{$category->name}}">{{$category->name}}</option>--}}
-                            {{--                        @endforeach--}}
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-span-2 sm:col-span-1">
@@ -760,9 +691,10 @@
                 </div>
 
                 <div class="mr-5">
-                    <input name="image"
+                    <input type="file"
+                           name="image"
                            class="p-2.5 w-full m-3 block text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                           id="file_input" type="file">
+                           id="file_input">
                 </div>
 
                 <button type="submit"
