@@ -23,19 +23,19 @@ class LoginController extends Controller
             "password" => 'required'
         ]);
 
-        if (auth()->attempt($formFields, $request->filled('remember'))) {
+        if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
             $user=User::where('id',Auth::id())->first();
 
 //            if($user->HasRole('admin')){
-//                return redirect('dashboard')->with("login", 'true');
+                return redirect('/');
 //
 //            }else{
 //                return redirect('client')->with("login", 'true');
 //            }
 
         }
-        return back()->withErrors(['email' => 'Invalid Credentials'])
-            ->onlyInput();
+//        return back()->withErrors(['email' => 'Invalid Credentials'])
+//            ->onlyInput();
     }
 }
