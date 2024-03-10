@@ -65,9 +65,9 @@ Route::delete('/deleteCategory/{id}', [CategoryController::class, 'destroyCatego
 Route::delete('/destroy/{id}', [CategoryController::class, 'destroy']);
 
 //events
-Route::get('/createEvent', [EventController::class, 'showForm']);
+Route::get('/organizer_event', [EventController::class, 'showForm']);
+Route::post('/event-store', 'EventController@eventStore')->name('event.store');
 
-Route::post('/createEvent', [EventController::class, 'store'])->name('event.store');
 
 Route::get('/allEvents', [EventController::class, 'AllEvents']);
 
@@ -78,4 +78,7 @@ Route::get('/updateEvent/{id}', [EventController::class, 'editEvent']);
 Route::post('/updateEvent/{id}', [EventController::class, 'updateEvent']);
 Route::get('/addevent', [EventController::class, 'ShowAddEvent']);
 Route::get('/addevent', [EventController::class, 'AllEvents']);
+
+
+
 

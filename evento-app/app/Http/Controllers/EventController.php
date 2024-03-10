@@ -18,14 +18,13 @@ class EventController extends Controller
     {
         $content = file_get_contents('https://raw.githubusercontent.com/alaouy/sql-moroccan-cities/master/json/ville.json');
         $data = json_decode($content);
-        return view('organiser.createEvent', compact('data'));
+        return view('organizer_event', compact('data'));
     }
 
 
     public function AllEvents()
     {
         $categories = Category::all();
-
         $events = Event::all();
         return view('organizer_event', compact('events', 'categories'));
     }

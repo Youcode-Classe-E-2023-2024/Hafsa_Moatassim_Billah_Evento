@@ -549,7 +549,7 @@
                                 @foreach($events as $event)
                                     <div class="w-full md:w-1/3 px-4">
                                         <div class="bg-gray-300 rounded-lg mb-10">
-                                            <img src="https://images.pexels.com/photos/20392251/pexels-photo-20392251/free-photo-of-ete-jardin-animal-feuille.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                            <img src="url({{$event->image}})"
                                                  alt="image" class="w-full"/>
                                             <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
                                                 <h3>
@@ -636,9 +636,13 @@
                     <div class="col-span-2 sm:col-span-1">
                         <label for="name"
                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
-                        <input type="text" name="location" id="lieu"
-                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                               placeholder="Type the place" required="">
+                        <select name="category"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option name="location" selected="">Select category</option>
+{{--                            @foreach ($data as $city)--}}
+{{--                                <option value="{{ $city['id'] }}">{{ $city['ville'] }}</option>--}}
+{{--                            @endforeach--}}
+                        </select>
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <label for="price"
