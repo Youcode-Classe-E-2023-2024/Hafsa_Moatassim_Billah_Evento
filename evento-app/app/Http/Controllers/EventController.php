@@ -26,7 +26,7 @@ class EventController extends Controller
     {
         $categories = Category::all();
         $events = Event::all();
-        return view('organizer_event', compact('events', 'categories'));
+        return view('organizer_event', compact('events'));
     }
 
     public function ShowEventDescription($id)

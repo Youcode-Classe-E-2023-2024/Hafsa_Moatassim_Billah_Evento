@@ -3,22 +3,21 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\Rule;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      */
-    public function create()
+    public function register()
     {
-        return view("Auth.register");
+        return view('Auth.register');
     }
 
     /**
@@ -33,7 +32,8 @@ class RegisterController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:8',
-            'picture' => 'required'
+            'picture' => 'required',
+            'role' => 'required'
         ]);
 
         $fileName = time() . $request->file('picture')->getClientOriginalName();
@@ -46,10 +46,44 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'picture' => $picturePath
+            'picture' => $picturePath,
+            'role' => $request->role,
         ]);
 
-        return redirect('/login');
 
+        if (User::count() === 1) {
+            $user->assignRole('admin');
+        } elseif($request->role == 'organizer'){
+            $user->assignRole('organizer');
+            return redirect ('/organizer_event');
+        }else {
+            $user->assignRole('client');
+        }
+
+    }
+
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

@@ -6,36 +6,60 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 
 class LoginController extends Controller
 {
-
-    public function create()
+    /**
+     * Display a listing of the resource.
+     */
+    public function login()
     {
-        return view("Auth.login");
+        return view('auth.login');
     }
 
-    function authenticate(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        $formFields = $request->validate([
-            "email" => ['required', 'email'],
-            "password" => 'required'
-        ]);
+        $credentials = $request->only('email', 'password');
 
-        if (auth()->attempt($formFields)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            $user=User::where('id',Auth::id())->first();
 
-//            if($user->HasRole('admin')){
-                return redirect('/');
-//
-//            }else{
-//                return redirect('client')->with("login", 'true');
-//            }
-
+            $user = User::find(Auth::id());
+            if($user->hasRole("admin")) return redirect()->intended('/dashboard');
+            elseif ($user->hasRole("organizer")) return redirect()->intended('/organisateur');
+            else return redirect()->intended('/');
+            return redirect('/');
         }
-//        return back()->withErrors(['email' => 'Invalid Credentials'])
-//            ->onlyInput();
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

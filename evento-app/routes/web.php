@@ -33,18 +33,21 @@ Route::get('/eventliste', function () {
 Route::get('/content', function () {
     return view('content');
 });
+Route::get('/login', function () {
+    return view('Auth.login');
+});
 
 
 
 Route::post('logout', [LogoutController::class, 'destroy'])
     ->middleware('auth');
-Route::get("register", [RegisterController::class, 'create'])->name('Form-register');
 
-Route::post("register", [RegisterController::class, 'store'])->name('register');
+Route::get('/register', [RegisterController::class, 'register'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get("login", [LoginController::class, 'create'])->name('Form-login');
+//Route::get("login", [LoginController::class, 'create'])->name('Form-login');
 
-Route::post("login", [LoginController::class, 'authenticate'])->name('login');
+Route::post("login", [LoginController::class, 'store'])->name('login');
 
 Route::middleware('guest')->group(function () {
     Route::get('/request', [ForgotPasswordLinkController::class, 'create']);

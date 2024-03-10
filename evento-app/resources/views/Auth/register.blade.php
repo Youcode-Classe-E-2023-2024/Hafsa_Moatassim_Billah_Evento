@@ -1,102 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Register</title>
-</head>
+<!-- component -->
+<script src="https://cdn.tailwindcss.com"></script>
 
 <body>
-<section class="bg-gray-50 dark:bg-gray-900">
-    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div
-            class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1
-                    class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                    Create and account
-                </h1>
-                @if (!empty(session('success')))
-                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
-                         role="alert">
-                        <strong class="font-bold">Successfully:)</strong>
-                        <span class="block sm:inline">{{ session('success') }}</span>
-                    </div>
-                @endif
-                <form class="space-y-4 md:space-y-6" action="{{ route('register') }}" method="post">
-                    @csrf
-                    <div>
-                        <label for="text"
-                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
-                        <input type="text" name="name" id="username"
-                               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                               placeholder="Username" required="">
-                        @error('name')
-                        <p class="text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div>
-                        <label for="email"
-                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                        <input type="email" name="email" id="password_confirmation"
-                               placeholder="name@company.com"
-                               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                               required="">
-                        @error('email')
-                        <p class="text-red-600">{{ $message }}</p>
-                        @enderror
+<section class="min-h-screen flex items-stretch text-white ">
+    <div class="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center"
+         style="background-image: url(https://img.freepik.com/free-photo/glowing-stage-light-illuminates-cheering-rock-fans-generated-by-ai_188544-37983.jpg?t=st=1709674772~exp=1709678372~hmac=dc8f3f98f4d1cde77c44b0d68f66c68d46c29115bae47bad23b3b1ce4132bace&w=1060);">
+        <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
+        <div class="w-full px-24 z-10">
+            <h1 class="text-4xl font-bold text-left tracking-wide">Welcome back!</h1>
+            <p class="text-2xl my-4">Sign in to your Evento account and unlock a world of exciting events and
+                unforgettable experiences.</p>
+        </div>
+    </div>
+    <div class="lg:w-1/2 w-full flex items-center justify-center text-center md:px-16 px-0 z-0"
+         style="background-color: #161616;">
+        <div class="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center"
+             style="background-image: url(https://images.unsplash.com/photo-1577495508048-b635879837f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80);">
+            <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
+        </div>
+        <div class="w-full py-6 z-20">
+            {{--            <h1 class="w-auto text-3xl">--}}
+            {{--                Evento--}}
+            {{--            </h1>--}}
+            <div class="py-2 space-x-2">
+                <span
+                    class="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white">f</span>
+                <span
+                    class="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white">G+</span>
+                <span
+                    class="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white">in</span>
+            </div>
 
-                    </div>
-                    <div>
-                        <label for="password"
-                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                        <input type="password" name="password" id="password" placeholder="••••••••"
-                               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                               required="">
-                        @error('password')
-                        <p class="text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div>
-                        <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white">
-                            <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+            <form enctype="multipart/form-data" method="post" action="{{ route('register') }}"
+                  class="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
+                @csrf
+                <div class="pb-2 ">
+                    <div class="extraOutline p-4 bg-black bg-whtie m-auto rounded-lg">
+                        <div class="file_upload p-5 relative h-36 border-4 border-dotted border-gray-300 rounded-lg">
+                            <svg class="text-indigo-500 w-8 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg"
+                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
                             </svg>
-                            <span class="mt-2 text-base leading-normal">Select a file</span>
-                            <input type='file' name="picture" class="hidden" />
+                            <div class="input_field flex flex-col w-max mx-auto text-center">
+                                <label>
+                                    <input class="text-sm cursor-pointer w-36 hidden" type="file" name="picture"
+                                           id="picture"/>
+                                    <div
+                                        class="text bg-indigo-600 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-indigo-500">
+                                        Select
+                                    </div>
+                                </label>
+
+                                <div class="title text-sm text-indigo-500 uppercase">or drop files here</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pb-2 pt-2">
+                        <input class="block w-full p-2 text-lg rounded-sm bg-black" type="text" name="name" id="name"
+                               placeholder="Username">
+                    </div>
+                    <div class="pb-2 pt-4">
+                        <input type="email" name="email" id="email" placeholder="Email"
+                               class="block w-full p-2 text-lg rounded-sm bg-black">
+                    </div>
+                    <div class="pb-2 pt-4">
+                        <input class="block w-full p-2 text-lg rounded-sm bg-black" type="password" name="password"
+                               id="password" placeholder="Password">
+                    </div>
+                    <div class="pb-2 pt-4">
+                        <input class="block w-full p-2 text-lg rounded-sm bg-black" type="password"
+                               name="password_confirmation" id="password_confirmation"
+                               placeholder="password_confirmation">
+                    </div>
+
+                    <div class=" pt-2">
+                        <label class="mb-3 block text-base font-medium">
+                            Would you like to sign up as an Organizer or a Client?
                         </label>
+                        <div class="flex items-center space-x-6 px-24">
+                            <div class="flex items-center">
+                                <input type="radio" name="role" value="organizer" id="radioButton1"
+                                       class="h-5 w-5"/>
+                                <label for="radioButton1" class="pl-3 text-base font-medium">
+                                    Organizer
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" name="role" value="automatic" id="radioButton2"
+                                       class="h-5 w-5"/>
+                                <label for="radioButton2" class="pl-3 text-base font-medium">
+                                    Client
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                    <button type="submit"
-                            class="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">
-                        Register
-                    </button>
-                    <button class="w-full flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative">
-                          <span class="absolute left-4">
-                            <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                                 xmlns:xlink="http://www.w3.org/1999/xlink">
-                              <path fill="#EA4335 "
-                                    d="M5.26620003,9.76452941 C6.19878754,6.93863203 8.85444915,4.90909091 12,4.90909091 C13.6909091,4.90909091 15.2181818,5.50909091 16.4181818,6.49090909 L19.9090909,3 C17.7818182,1.14545455 15.0545455,0 12,0 C7.27006974,0 3.1977497,2.69829785 1.23999023,6.65002441 L5.26620003,9.76452941 Z"/>
-                              <path fill="#34A853"
-                                    d="M16.0407269,18.0125889 C14.9509167,18.7163016 13.5660892,19.0909091 12,19.0909091 C8.86648613,19.0909091 6.21911939,17.076871 5.27698177,14.2678769 L1.23746264,17.3349879 C3.19279051,21.2936293 7.26500293,24 12,24 C14.9328362,24 17.7353462,22.9573905 19.834192,20.9995801 L16.0407269,18.0125889 Z"/>
-                              <path fill="#4A90E2"
-                                    d="M19.834192,20.9995801 C22.0291676,18.9520994 23.4545455,15.903663 23.4545455,12 C23.4545455,11.2909091 23.3454545,10.5272727 23.1818182,9.81818182 L12,9.81818182 L12,14.4545455 L18.4363636,14.4545455 C18.1187732,16.013626 17.2662994,17.2212117 16.0407269,18.0125889 L19.834192,20.9995801 Z"/>
-                              <path fill="#FBBC05"
-                                    d="M5.27698177,14.2678769 C5.03832634,13.556323 4.90909091,12.7937589 4.90909091,12 C4.90909091,11.2182781 5.03443647,10.4668121 5.26620003,9.76452941 L1.23999023,6.65002441 C0.43658717,8.26043162 0,10.0753848 0,12 C0,13.9195484 0.444780743,15.7301709 1.23746264,17.3349879 L5.27698177,14.2678769 Z"/>
-                            </svg>
-                          </span>
-                        <span>Sign in with Google</span>
-                    </button>
+                    <div class="px-4 pb-2 pt-4">
+                        <button
+                            class="uppercase block w-full p-2 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">
+                            Register
+                        </button>
+                    </div>
                     <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                        Already have an account? <a href="{{ route('Form-login') }}" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login
+                        Already have an account? <a href="/login"
+                                                    class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login
                             here</a>
                     </p>
-                </form>
-            </div>
+
+                    <div class="p-4 text-center right-0 left-0 flex justify-center space-x-4 mt-16 lg:hidden ">
+                        <a href="#">
+                            <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24">
+                                <path
+                                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#">
+                            <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24">
+                                <path
+                                    d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                            </svg>
+                        </a>
+                        <a href="#">
+                            <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+            </form>
         </div>
     </div>
 </section>
 </body>
-
-</html>
