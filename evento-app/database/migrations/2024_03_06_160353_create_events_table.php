@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('nbr_place');
             $table->text('description');
             $table->enum('reservation_type', ['automatic', 'manuel']);
+            $table->enum('softdelete', ['archived', 'published']);
             $table->string('image');
             $table->unsignedBigInteger('creator');
             $table->unsignedBigInteger('category');

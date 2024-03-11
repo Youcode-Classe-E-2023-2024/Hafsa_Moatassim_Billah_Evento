@@ -29,7 +29,7 @@ class EventController extends Controller
     {
         $categories = Category::all();
         $content = file_get_contents('https://raw.githubusercontent.com/alaouy/sql-moroccan-cities/master/json/ville.json');
-        $events = Event::all();
+        $events = Event::where('softdelete', 'published')->get();
         $user = Auth::getUser();
         $data = json_decode($content);
         return view('organizer_event', compact('events', 'user', 'categories', 'data'));
@@ -163,7 +163,8 @@ class EventController extends Controller
     public function deleteEvent(string $id)
     {
         $event = Event::findOrFail($id);
-        $event->delete();
+        $event->softdelete = "archived";
+        $event->save();
 
         return redirect('/allEvents');
     }
