@@ -76,12 +76,11 @@ class EventController extends Controller
 
         if ($request->hasFile('image')) {
             $fileName = time() . $request->file('image')->getClientOriginalName();
-            $path = $request->file('image')->storeAs('/picture', $fileName, 'public');
-            $picturePath = Storage::url($path);
+            $path = $request->file('image')->storeAs('/storage/picture', $fileName, 'public');
+            $picturePath = 'storage/picture/' . $fileName;
         } else {
             $picturePath = null;
         }
-
 
 
         Event::create([

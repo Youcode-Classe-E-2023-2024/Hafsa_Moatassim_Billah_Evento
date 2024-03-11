@@ -37,8 +37,8 @@ class RegisterController extends Controller
         ]);
 
         $fileName = time() . $request->file('picture')->getClientOriginalName();
-        $path = $request->file('picture')->storeAs('/picture', $fileName, 'public');
-        $picturePath = Storage::url($path);
+        $path = $request->file('picture')->storeAs('/storage/picture', $fileName, 'public');
+        $picturePath = 'storage/picture/';
 
         $picture["picture"] = $picturePath;
 
