@@ -13,13 +13,17 @@ use App\Http\Controllers\DashboardController;
 
 
 
-Route::middleware('role:organizer')->group(function() {
-    Route::get('/dashboard', [DashboardController::class, 'index']);
-});
 Route::middleware('role:admin')->group(function() {
+
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/dashboard_user', [DashboardController::class, 'show']);
     Route::get('/dashboard_category', [CategoryController::class, 'showCategories']);
+});
+
+Route::middleware('role:organizer')->group(function() {
+
+    Route::get('/organizer_event', [DashboardController::class, 'show']);
+
 });
 
 Route::get('/', function () {
