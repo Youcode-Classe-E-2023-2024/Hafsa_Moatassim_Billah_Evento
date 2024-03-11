@@ -37,7 +37,7 @@ class RegisterController extends Controller
         ]);
 
         $fileName = time() . $request->file('picture')->getClientOriginalName();
-        $path = $request->file('picture')->storeAs('picture', $fileName, 'public');
+        $path = $request->file('picture')->storeAs('/picture', $fileName, 'public');
         $picturePath = Storage::url($path);
 
         $picture["picture"] = $picturePath;
@@ -50,6 +50,7 @@ class RegisterController extends Controller
             'role' => $request->role,
         ]);
 
+        Auth::login($user);
 
         if (User::count() === 1) {
             $user->assignRole('admin');
@@ -59,6 +60,7 @@ class RegisterController extends Controller
         }else {
             $user->assignRole('client');
         }
+
 
     }
 

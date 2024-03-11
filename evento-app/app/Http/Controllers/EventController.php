@@ -18,16 +18,21 @@ class EventController extends Controller
     {
         $content = file_get_contents('https://raw.githubusercontent.com/alaouy/sql-moroccan-cities/master/json/ville.json');
         $data = json_decode($content);
+        $events = Event::all();
         $user = Auth::user();
-        return view('organizer_event', compact('data', 'user'));
+        $categories = Category::all();
+        return view('organizer_event', compact('data', 'user', 'events', 'categories'));
     }
 
 
     public function AllEvents()
     {
         $categories = Category::all();
+        $content = file_get_contents('https://raw.githubusercontent.com/alaouy/sql-moroccan-cities/master/json/ville.json');
         $events = Event::all();
-        return view('organizer_event', compact('events'));
+        $user = Auth::getUser();
+        $data = json_decode($content);
+        return view('organizer_event', compact('events', 'user', 'categories', 'data'));
     }
 
 
@@ -71,7 +76,7 @@ class EventController extends Controller
 
         if ($request->hasFile('image')) {
             $fileName = time() . $request->file('image')->getClientOriginalName();
-            $path = $request->file('image')->storeAs('image', $fileName, 'public');
+            $path = $request->file('image')->storeAs('/picture', $fileName, 'public');
             $picturePath = Storage::url($path);
         } else {
             $picturePath = null;
@@ -90,7 +95,7 @@ class EventController extends Controller
             'reservation_type' => $request->reservation_type,
             'image' => $picturePath,
             'category' => $request->category,
-//            'creator' => $user,
+            'creator' => $user,
         ]);
 
 

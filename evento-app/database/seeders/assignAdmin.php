@@ -16,5 +16,7 @@ class assignAdmin extends Seeder
     {
         $user = User::where('email', 'zak@gmail.com')->first();
         $user->assignRole('admin');
+
+
     }
 }

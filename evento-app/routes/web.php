@@ -76,11 +76,11 @@ Route::delete('/deleteCategory/{id}', [CategoryController::class, 'destroyCatego
 Route::delete('/destroy/{id}', [CategoryController::class, 'destroy']);
 
 //events
-Route::get('/organizer_event', [EventController::class, 'showForm']);
-Route::post('/event-store', 'EventController@eventStore')->name('event.store');
+Route::get('/organizer_event', [EventController::class, 'showForm'])->middleware('auth');
+Route::post('/event-store', [EventController::class,'store'])->name('event.store');
 
 
-Route::get('/allEvents', [EventController::class, 'AllEvents']);
+Route::get('/allEvents', [EventController::class, 'AllEvents'])->middleware('auth');
 
 Route::delete('/deleteEvent/{id}', [EventController::class, 'deleteEvent']);
 
