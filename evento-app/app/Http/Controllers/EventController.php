@@ -59,20 +59,14 @@ class EventController extends Controller
             'title' => 'required',
             'location' => 'required',
             'price' => 'required',
-            'date' => 'required',
-            'time' => 'required',
+            'date' => 'required|after:now',
+            'time' => 'required|after:now',
             'description' => 'required',
             'reservation_type' => 'required',
             'image' => 'required|image',
             'category' => 'required',
 
         ]);
-
-//        if($validator->fails()) {
-//            return back()
-//                ->withErrors($validator)
-//                ->withInput();
-//        }
 
         if ($request->hasFile('image')) {
             $fileName = time() . $request->file('image')->getClientOriginalName();
@@ -118,40 +112,21 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function updateEvent(Request $request, $id)
+    public function updateEvent(Request $request)
     {
         $user = Auth::id();
-        $event = Event::findOrFail($id);
+        $event = Event::findOrFail($request->eventId);
 
         $request->validate([
-            'title' => 'required',
-            'location' => 'required',
             'price' => 'required',
-            'date' => 'required',
+            'date' => 'required|after:now',
             'time' => 'required',
-            'description' => 'required',
-            'reservation_type' => 'required',
-            'image' => 'required|image',
         ]);
 
-        if ($request->hasFile('image')) {
-            $fileName = time() . $request->file('image')->getClientOriginalName();
-            $path = $request->file('image')->storeAs('image', $fileName, 'public');
-            $picturePath = Storage::url($path);
-        } else {
-            $picturePath = null;
-        }
 
-        $event->title = $request['title'];
-        $event->location = $request['location'];
         $event->date = $request['date'];
         $event->time = $request['time'];
         $event->price = $request['price'];
-        $event->nbr_place = $request['nbr_place'];
-        $event->description = $request['description'];
-        $event->reservation_type = $request['reservation_type'];
-        $event->image = $picturePath;
-        $event->creator = $user;
 
         $event->save();
         return redirect('/allEvents');

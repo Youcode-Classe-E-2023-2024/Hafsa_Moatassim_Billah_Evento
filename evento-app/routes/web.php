@@ -85,7 +85,8 @@ Route::delete('/deleteEvent/{id}', [EventController::class, 'deleteEvent']);
 
 Route::get('/updateEvent/{id}', [EventController::class, 'editEvent']);
 
-Route::post('/updateEvent/{id}', [EventController::class, 'updateEvent']);
+Route::post('/updateEvent', [EventController::class, 'updateEvent'])->name('updateEvent');
+
 //Route::get('/addevent', [EventController::class, 'ShowAddEvent'])->middleware('auth');
 Route::get('/addevent', [EventController::class, 'AllEvents'])->middleware('auth');
 

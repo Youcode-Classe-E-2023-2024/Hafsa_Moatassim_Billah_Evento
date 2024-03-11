@@ -523,6 +523,7 @@
             {{--                </div>--}}
             {{--            </div>--}}
             <!-- /Statistics -->
+
             @if($errors->any())
                 @foreach($errors->all() as $error)
                     <div>{{ $error }}</div>
@@ -542,52 +543,48 @@
                 </button>
 
                 <!-- Events -->
-                <section>
-                    <div class="container">
-                        <div class="flex flex-wrap -mx-4">
-                            <div class="flex flex-wrap -mx-4">
-                                @foreach($events as $event)
-                                    <div class="w-full md:w-1/3 px-4">
-                                        <div class="bg-gray-300 rounded-lg mb-10">
-                                            <img src="{{url($event->image)}}"
-                                                 alt="image" class="w-full"/>
-                                            <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
-                                                <h3>
-                                                    <a href="javascript:void(0)"
-                                                       class="font-semibold text-dark text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px] mb-4 block hover:text-primary">
-                                                        {{$event->title}}
-                                                    </a>
-                                                </h3>
-                                                <p class="text-base text-body-color leading-relaxed mb-7">
-                                                    {{$event->created_at}}
-                                                </p>
-                                                <p class="text-base text-body-color leading-relaxed mb-7">
-                                                    {{$event->price}} MAD
-                                                </p>
-                                                <p class="text-base text-body-color leading-relaxed mb-7">
-                                                    {{$event->location}}
-                                                </p>
-                                                <button type="button"
-                                                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                                                    Update
-                                                </button>
-                                                <form action="{{ url('/delete', $event->id )}}"
-                                                      method="get">
-                                                    @csrf
-                                                    <button type="submit"
-                                                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                                                        Delete
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
 
-                        </div>
+                <div class="container">
+                    <div class="flex flex-wrap -mx-4">
+                        @foreach($events as $event)
+                            <div class="w-full md:w-1/3 px-4 mb-8">
+                                <div class="bg-gray-300 rounded-lg h-full">
+                                    <img src="{{url($event->image)}}" alt="image"
+                                         class="w-full h-64 object-cover rounded-t-lg"/>
+                                    <div class="p-8 text-center">
+                                        <h3>
+                                            <a href="javascript:void(0)"
+                                               class="font-semibold text-dark text-xl hover:text-primary">{{$event->title}}</a>
+                                        </h3>
+                                        <p class="text-base text-body-color leading-relaxed mb-4">
+                                            {{$event->created_at}}
+                                        </p>
+                                        <p class="text-base text-body-color leading-relaxed mb-4">
+                                            {{$event->price}} MAD
+                                        </p>
+                                        <p class="text-base text-body-color leading-relaxed mb-4">
+                                            {{$event->location}}
+                                        </p>
+                                        <button type="button " data-modal-target="crud-modal4"
+                                                data-modal-toggle="crud-modal4" data-event-id="{{$event->id}}"
+                                                class="updateBtn focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                            Update
+                                        </button>
+                                        <form action="{{ url('/delete', $event->id )}}" method="get">
+                                            @csrf
+                                            <button type="submit"
+                                                    class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
+                </div>
                 </section>
+
                 <!-- ./Events -->
             </div>
         </div>
@@ -596,25 +593,11 @@
 </div>
 
 <!-- Add Event Popup -->
-
 <div id="crud-modal3" tabindex="-1" aria-hidden="true"
      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <!-- Modal header -->
-            <div class="flex items-center justify-between border-b rounded-t dark:border-gray-600">
-                <button type="button"
-                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                        data-modal-toggle="crud-modal">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                         viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-            </div>
             <!-- Modal body -->
             <form class="p-4 md:p-5" action="{{ route('event.store') }}" method="post" enctype="multipart/form-data">
                 @method('post')
@@ -713,7 +696,59 @@
                               d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                               clip-rule="evenodd"></path>
                     </svg>
-                    Add new product
+                    Add new Event
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Update Event Popup -->
+<div id="crud-modal4" tabindex="-1" aria-hidden="true"
+     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal body -->
+            <form class="p-4 md:p-5"
+                  action="{{ route('updateEvent') }}"
+                  method="POST">
+                @csrf
+                <input type="hidden" id="eventId" name="eventId">
+                <div class="grid gap-4 mb-4 grid-cols-1">
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="price"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                        <input type="number" name="price" id="price"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                               placeholder="$2999" required="">
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="name"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
+                        <input type="date" name="date" id="date"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                               placeholder="Type the Date" required="">
+                    </div>
+
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="name"
+                               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Time</label>
+                        <input type="time" name="time" id="time"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                               placeholder="Type product name" required="">
+                    </div>
+                </div>
+
+                <button type="submit"
+                        class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                              clip-rule="evenodd"></path>
+                    </svg>
+                    Update Event
                 </button>
             </form>
         </div>
@@ -725,6 +760,7 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script>
     const setup = () => {
         const getTheme = () => {
@@ -747,4 +783,8 @@
             },
         }
     }
+
+    $('.updateBtn').on('click', function() {
+        $('#eventId').val($(this).data('event-id'));
+    })
 </script>
