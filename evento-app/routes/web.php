@@ -13,7 +13,7 @@ use App\Http\Controllers\DashboardController;
 
 
 
-Route::middleware('role:admin')->group(function() {
+Route::middleware('role:admin', 'auth')->group(function() {
 
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/dashboard_user', [DashboardController::class, 'show']);
@@ -21,7 +21,7 @@ Route::middleware('role:admin')->group(function() {
 });
 
 Route::middleware('role:organizer')->group(function() {
-
+    Route::get('/allEvents', [EventController::class, 'AllEvents'])->middleware('auth');
     Route::get('/organizer_event', [DashboardController::class, 'show']);
 
 });
@@ -80,7 +80,6 @@ Route::get('/organizer_event', [EventController::class, 'showForm'])->middleware
 Route::post('/event-store', [EventController::class,'store'])->name('event.store');
 
 
-Route::get('/allEvents', [EventController::class, 'AllEvents'])->middleware('auth');
 
 Route::delete('/deleteEvent/{id}', [EventController::class, 'deleteEvent']);
 
@@ -95,6 +94,9 @@ Route::post('/logout', [LogoutController::class, 'destroy'])->name('logout');
 
 Route::delete('/delete/{id}', [UserController::class, 'destroy']);
 Route::put('/update/{id}', [UserController::class, 'update']);
+
+Route::get('/delete/{id}', [EventController::class, 'deleteEvent']);
+
 
 
 

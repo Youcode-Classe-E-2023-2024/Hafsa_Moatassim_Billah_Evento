@@ -38,7 +38,7 @@ class RegisterController extends Controller
 
         $fileName = time() . $request->file('picture')->getClientOriginalName();
         $path = $request->file('picture')->storeAs('/storage/picture', $fileName, 'public');
-        $picturePath = 'storage/picture/';
+        $picturePath = '/storage/picture/' . $fileName;
 
         $picture["picture"] = $picturePath;
 
@@ -58,7 +58,7 @@ class RegisterController extends Controller
             $user->assignRole('organizer');
             return redirect ('/organizer_event');
         }else {
-            $user->assignRole('client');
+            $user->assignRole('user');
         }
 
 

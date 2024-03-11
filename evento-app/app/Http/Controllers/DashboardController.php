@@ -17,7 +17,7 @@ class DashboardController extends Controller
     public function show()
     {
         $user = Auth::user();
-        $users = User::paginate(8);
+        $users = User::paginate(7);
         $events = Event::all();
         return view('dashboard_user', compact('users', 'user', 'events'));
     }
