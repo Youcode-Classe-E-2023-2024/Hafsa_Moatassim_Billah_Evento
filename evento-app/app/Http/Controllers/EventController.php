@@ -35,6 +35,16 @@ class EventController extends Controller
         return view('organizer_event', compact('events', 'user', 'categories', 'data'));
     }
 
+    public function AllEventshome()
+    {
+        $categories = Category::all();
+        $content = file_get_contents('https://raw.githubusercontent.com/alaouy/sql-moroccan-cities/master/json/ville.json');
+        $events = Event::where('softdelete', 'published')->get();
+        $user = Auth::getUser();
+        $data = json_decode($content);
+        return view('eventliste', compact('events', 'user', 'categories', 'data'));
+    }
+
 
     public function ShowEventDescription($id)
     {

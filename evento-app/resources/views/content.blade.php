@@ -22,7 +22,7 @@
 
             <div class="p-10 m-auto">
                 <div class="pt-5 mb-5 w-full text-gray-800 text-4xl px-5 font-bold leading-none">
-                    Kemp and Bottoms hurl insults
+                    {{$event->title}}
                 </div>
 
                 <div class="w-full text-gray-600 font-thin italic px-5 pt-3">

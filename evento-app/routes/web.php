@@ -99,6 +99,9 @@ Route::put('/update/{id}', [UserController::class, 'update']);
 Route::get('/delete/{id}', [EventController::class, 'deleteEvent']);
 
 
+Route::get('/eventliste', [EventController::class, 'AllEventshome']);
+Route::get('/content', [EventController::class, 'ShowEventDescription']);
+
 
 
 
