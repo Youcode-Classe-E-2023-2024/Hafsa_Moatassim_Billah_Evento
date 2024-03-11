@@ -29,7 +29,7 @@ class LoginController extends Controller
 
             $user = User::find(Auth::id());
             if($user->hasRole("admin")) return redirect()->intended('/dashboard');
-            elseif ($user->hasRole("organizer")) return redirect()->intended('/organisateur');
+            elseif ($user->hasRole("organizer")) return redirect()->intended('/eventliste');
             else return redirect()->intended('/');
             return redirect('/');
         }

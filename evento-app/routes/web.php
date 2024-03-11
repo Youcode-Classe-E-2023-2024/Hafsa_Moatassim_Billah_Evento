@@ -83,5 +83,7 @@ Route::get('/addevent', [EventController::class, 'ShowAddEvent']);
 Route::get('/addevent', [EventController::class, 'AllEvents']);
 
 
+Route::post('/logout', [LogoutController::class, 'destroy'])->name('logout');
+
 
 
