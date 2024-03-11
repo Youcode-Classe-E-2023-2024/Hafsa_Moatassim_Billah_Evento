@@ -4,7 +4,7 @@
         class="flex items-center justify-start md:justify-center pl-3 w-14 md:w-64 h-14 bg-blue-800 dark:bg-gray-800 border-none">
         <img class="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden"
              src="https://therminic2018.eu/wp-content/uploads/2018/07/dummy-avatar.jpg"/>
-        <span class="hidden md:block">ADMIN</span>
+        <span class="hidden md:block">@if($user->hasRole('admin')) {{ 'Admin' }} @elseif($user->hasRole('organizer')) {{ 'Organizer' }}@endif</span>
     </div>
     <div class="flex justify-between items-center h-14 bg-blue-800 dark:bg-gray-800 header-right">
         <div class="flex items-center w-full max-w-xl mr-4 p-2 shadow-sm"></div>
@@ -51,9 +51,7 @@
                     </svg>
                 </button>
             </li>
-            <li>
-                <div class="block w-px h-6 mx-3 bg-gray-400 dark:bg-gray-700"></div>
-            </li>
+
             <li>
                 <form action="/logout"
                       method="POST">
@@ -78,15 +76,16 @@
 <div
     class="fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar">
     <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
-        <ul class="flex flex-col py-4 space-y-1">
-            <li class="px-5 hidden md:block">
-                <div class="flex flex-row items-center h-8">
-                    <div class="text-sm font-light tracking-wide text-gray-400 uppercase">Main</div>
-                </div>
-            </li>
-            <li>
-                <a href="/dashboard"
-                   class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+        @if($user->hasRole('admin'))
+            <ul class="flex flex-col py-4 space-y-1">
+                <li class="px-5 hidden md:block">
+                    <div class="flex flex-row items-center h-8">
+                        <div class="text-sm font-light tracking-wide text-gray-400 uppercase">Main</div>
+                    </div>
+                </li>
+                <li>
+                    <a href="/dashboard"
+                       class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
                                 <span class="inline-flex justify-center items-center ml-4">
                                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                        xmlns="http://www.w3.org/2000/svg">
@@ -95,12 +94,12 @@
                                       </path>
                                   </svg>
                                 </span>
-                    <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="/dashboard_user"
-                   class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                        <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/dashboard_user') }}"
+                       class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
                             <span class="inline-flex justify-center items-center ml-4">
                               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                    xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round"
@@ -108,43 +107,46 @@
                                                                             stroke-width="2"
                                                                             d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
                             </span>
-                    <span class="ml-2 text-sm tracking-wide truncate">Users</span>
-                </a>
-            </li>
-            <li>
-                <a href="/dashboard_category"
-                   class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                        <span class="ml-2 text-sm tracking-wide truncate">Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboard_category"
+                       class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
                     <span class="inline-flex justify-center items-center ml-4">
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                            xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round"
                                                                     stroke-width="2"
                                                                     d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path></svg>
                     </span>
-                    <span class="ml-2 text-sm tracking-wide truncate">Category</span>
-                </a>
-            </li>
-            <li>
-                <a href="#"
-                   class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                        <span class="ml-2 text-sm tracking-wide truncate">Category</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
                 <span class="inline-flex justify-center items-center ml-4">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                        xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round"
                                                                 stroke-width="2"
                                                                 d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
                 </span>
-                    <span class="ml-2 text-sm tracking-wide truncate">Notifications</span>
-                </a>
-            </li>
-        </ul>
-        <ul class="flex flex-col py-4 space-y-1">
-            <li class="px-5 hidden md:block">
-                <div class="flex flex-row items-center h-8">
-                    <div class="text-sm font-light tracking-wide text-gray-400 uppercase">Organizer</div>
-                </div>
-            </li>
-            <li>
-                <a href="/addevent"
-                   class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+                        <span class="ml-2 text-sm tracking-wide truncate">Notifications</span>
+                    </a>
+                </li>
+            </ul>
+        @endif
+
+        @if(!$user->hasRole('admin'))
+            <ul class="flex flex-col py-4 space-y-1">
+                <li class="px-5 hidden md:block">
+                    <div class="flex flex-row items-center h-8">
+                        <div class="text-sm font-light tracking-wide text-gray-400 uppercase">Organizer</div>
+                    </div>
+                </li>
+                <li>
+                    <a href="/addevent"
+                       class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
                                 <span class="inline-flex justify-center items-center ml-4">
                                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                        xmlns="http://www.w3.org/2000/svg">
@@ -153,11 +155,12 @@
                                       </path>
                                   </svg>
                                 </span>
-                    <span class="ml-2 text-sm tracking-wide truncate">Add Event</span>
-                </a>
-            </li>
+                        <span class="ml-2 text-sm tracking-wide truncate">Add Event</span>
+                    </a>
+                </li>
 
-        </ul>
+            </ul>
+        @endif
         <p class="mb-14 px-5 py-3 hidden md:block text-center text-xs">Copyright @2021</p>
     </div>
 </div>

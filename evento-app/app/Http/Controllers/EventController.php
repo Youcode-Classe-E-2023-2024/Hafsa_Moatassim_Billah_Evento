@@ -18,7 +18,8 @@ class EventController extends Controller
     {
         $content = file_get_contents('https://raw.githubusercontent.com/alaouy/sql-moroccan-cities/master/json/ville.json');
         $data = json_decode($content);
-        return view('organizer_event', compact('data'));
+        $user = Auth::user();
+        return view('organizer_event', compact('data', 'user'));
     }
 
 

@@ -3,28 +3,32 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordLinkController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DashboardController;
 
 
 
+Route::middleware('role:organizer')->group(function() {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+});
+Route::middleware('role:admin')->group(function() {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard_user', [DashboardController::class, 'show']);
+    Route::get('/dashboard_category', [CategoryController::class, 'showCategories']);
+});
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+
 Route::get('/dashboard_category', function () {
     return view('dashboard_category');
 });
-Route::get('/dashboard_user', function () {
-    return view('dashboard_user');
-});
-
 
 Route::get('/eventliste', function () {
     return view('eventliste');
@@ -84,6 +88,11 @@ Route::get('/addevent', [EventController::class, 'AllEvents']);
 
 
 Route::post('/logout', [LogoutController::class, 'destroy'])->name('logout');
+
+Route::delete('/delete/{id}', [UserController::class, 'destroy']);
+Route::put('/update/{id}', [UserController::class, 'update']);
+
+
 
 
 

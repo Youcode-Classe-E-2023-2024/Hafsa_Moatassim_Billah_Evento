@@ -37,9 +37,18 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'role' => 'required'
+        ]);
+
+        $user = User::find($request->id);
+
+        $user->syncRoles($request->role);
+
+        return back()->with('success', 'Role Updated successfully');
+
     }
 
     /**
